@@ -12,6 +12,6 @@ while True:
         for i in combi_arr[i]:
             print(i, end=' ')
         print()
-    
+    print()
 
 

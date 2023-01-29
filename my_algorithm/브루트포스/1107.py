@@ -6,7 +6,7 @@ n = int(input())
 broken_num = list(map(int, input().split()))
 
 min_cnt = abs(100-target)
-
+#  -> 49999 <
 for nums in range(1000001):
     nums = str(nums)
 

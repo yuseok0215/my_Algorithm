@@ -14,9 +14,6 @@ for i in range(n):
 dx = [0,0,-1,1]
 dy = [-1,1,0,0]
 
-answer = 0
-
-
 def dfs(x1,y1,x2,y2,cnt):
     if cnt > 10:
         return print(-1)
@@ -27,12 +24,13 @@ def dfs(x1,y1,x2,y2,cnt):
         nx2 = x2 + dx[i]
         ny2 = y2 + dy[i]
 
-        if 0<=nx1<n and 0<=ny1<m and 0<=nx2<n and 0<=ny2<m:
-            if graph[nx1][ny1] == "#":
+        if 0<=nx1<n and 0<=ny1<m and 0<=nx2<n and 0<=ny2<m: # 움직임이 내부에 있을때
+            if graph[nx1][ny1] == "#": # 벽을 만났을때
                 nx1, ny1 = x1, y1
             if graph[nx2][ny2] == "#":
                 nx2, ny2 = x2, y2
             dfs(nx1, ny1, nx2, ny2, cnt+1)
+
         elif 0<=nx1<n and 0<=ny1<m:
             return cnt+1
         elif 0<=nx2<n and 0<=ny2<m:

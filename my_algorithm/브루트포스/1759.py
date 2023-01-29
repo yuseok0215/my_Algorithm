@@ -29,5 +29,3 @@ def back_tracking(cnt, idx):
         answer.pop()
 
 back_tracking(0,0)
-for elem in answer:
-    print(elem)

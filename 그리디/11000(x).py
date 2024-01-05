@@ -1,42 +1,27 @@
-"""
-s->t n개의 수업, 최소의 강의실에서 수업 가능하게.. 
-
-1. 접근방법
-순차적으로 돌면서 강의 끝나는 시간을 업데이트하고 다음 시작할 강의를 찾으면
-다시 강의 끝나는 시간을 업데이트하자 
-for문 한번 돌면 분명 남아있는 강의가 있을 것이다
-이건 while문으로 리스트내에 남아있는 강의가 없을 경우 빠져나오도록 하자.
-"""
+import sys
+import heapq
+input = sys.stdin.readline
 
 n = int(input())
+time = []
 
-lec = []
-for i in range(n):
-    a,b = map(int, input().split())
-    lec.append((a,b))
+for _ in range(n):
+    time.append(list(map(int, input().split())))
+time.sort(key=lambda x : (x[0],x[1]))
 
-
-room = 1
-
-end_time = []
-end_time.append(lec[0][1])
+heap = [time[0][1]]
 for i in range(1,n):
+    if heap[0] <= time[i][0]: # 다음 시작 시간이 끝나는 시간보다 이후면
+        heapq.heappop(heap)
+    heapq.heappush(heap,time[i][1])
 
-    pass_idx = 0
-    for j in range(len(end_time)):
-        if lec[i][0] >= end_time[j]:
-            pass_idx = j
+print(len(heap))
 
-    for j in range(pass_idx):
-        end_time.pop(j)
+"""
+1. 접근방법
+일단 이 문제는 시간초과가 날 수 있기 때문에 효율을 극대화해야 했다.(사실 모든 문제를 최대 효율로 풀어야하긴 함..)
+먼저 시간순으로 정렬하는 것까지는 생각할 수 있었다. 끝나는 시간을 어떻게 담고 뺴내야하는 것에서 발목을 잡혔다.
 
-    if len(end_time) == 0:
-        room += 1
-        end_time.append(lec[i][1])
-
-    if end_time[0] <= lec[i][0]: #시작 시간이 더 뒤일때
-        continue
-
-    room += 1
-    end_time.append(lec[i][1])
-print(room)
+heapq을 사용하자.
+1. pop했을 때 가장 작은 원소를 제거하고 반환함.
+"""

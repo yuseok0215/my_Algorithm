@@ -1,7 +1,3 @@
-"""
-가장 작은 두 숫자를 고르고 바꾼뒤에 그 숫자를 덮어씌우자..!
-heapq?
-"""
 import heapq
 
 n,m = map(int, input().split())
@@ -22,3 +18,8 @@ for num in cards:
     ans += num
 
 print(ans)
+
+"""
+가장 작은 두 숫자를 고르고 바꾼뒤에 그 숫자를 덮어씌우자..!
+heapq?
+"""

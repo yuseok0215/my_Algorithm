@@ -12,14 +12,15 @@ x+-1 혹은 2*x
 9 * 2 = 18
 18 - 1 =17
 """
+import sys
 from collections import deque
 
-MAX = 10**5
+input = sys.stdin.readline
+
 
 n,k = map(int, input().split())
 
-graph = [0 for _ in range(MAX)]
-max_idx = max(n,k)
+graph = [0 for _ in range(100001)]
 
 def bfs(start):
     q = deque()
@@ -30,10 +31,9 @@ def bfs(start):
 
         if x == k:
             return print(graph[x])
-            break
         
         for nx in (x-1, x+1, 2*x):
-            if graph[nx] == 0 and 0<=nx<=MAX:
+            if 0<=nx<=100000 and graph[nx] == 0: # AND는 순차적으로 돌기 떄문에 우선순위가 높은 것을 앞으로 둬야 시간이 빨라진다..
                 graph[nx] = graph[x] + 1
                 q.append(nx)
 

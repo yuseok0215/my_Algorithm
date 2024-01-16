@@ -16,9 +16,6 @@ for i in range(n):
         if graph[i][j] == 1:
             q.append((i,j))
 
-if not any(0 in row for row in graph):
-    print(0)    
-
 dx = [0,0,-1,1]
 dy = [-1,1,0,0]
 
@@ -28,7 +25,7 @@ def bfs():
 
         for i in range(4):
             nx = x + dx[i]
-            ny = y + dy[i]
+            ny = y + dy[i] 
 
             # if nx<0 or nx>=n or ny<0 or ny<=m:
             #     continue

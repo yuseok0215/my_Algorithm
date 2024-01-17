@@ -16,7 +16,7 @@ dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
 def dfs(x, y, count):
-    # global ans
+    
     ans = max(ans, count)
     for i in range(4):
         nx = x + dx[i]

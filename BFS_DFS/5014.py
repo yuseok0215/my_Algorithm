@@ -30,6 +30,7 @@ def bfs(k):
             if 0<nx<=f and graph[nx] == 0:
                 graph[nx] = graph[x] + 1
                 q.append(nx)
+                
     if graph[g] == 0:
         return "use the stairs"
     

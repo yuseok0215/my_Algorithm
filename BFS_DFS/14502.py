@@ -1,38 +1,57 @@
 from collections import deque
+import copy
+import sys
+input = sys.stdin.readline
 
-n,m = map(int, input().split())
+d = [[-1,0],[1,0],[0,-1],[0,1]]
 
-graph = []
-virus_index = []
-for i in range(n):
-    tmp_list = list(map(int, input().split()))
-    for j in range(m):
-        if tmp_list[j] == 2:
-            virus_index.append((i,j))
+def bfs():
+    queue = deque()
+    #queue에 2의 위치 전부 append
+    test_map = copy.deepcopy(lab_map)
+    for i in range(n):
+        for k in range(m):
+            if test_map[i][k] == 2:
+                queue.append((i,k))
 
-dx = [0,0,-1,1]
-dy = [-1,1,0,0]    
-
-def spread_virus(a,b):
-    q = deque()
-    q.append((a,b))
-
-    while q:
-        x,y = q.popleft()
+    while queue:
+        r,c = queue.popleft()
 
         for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
+            dr = r+d[i][0]
+            dc = c+d[i][1]
 
-            if 0<=nx<n and 0<=ny<m:
-                if graph[nx][ny] == 0:
-                    graph[nx][ny] = 2
-                    q.append((nx,ny))
+            if (0<=dr<n) and (0<=dc<m):
+                if test_map[dr][dc] == 0:
+                    test_map[dr][dc] =2
+                    queue.append((dr,dc))
 
-cnt = 0
-for i in range(n):
-    for j in range(m):
-        if graph[i][j] == 0:
-            graph[i][j] = 1
-            cnt += 1
-    
+    global result
+    count = 0
+    for i in range(n):
+        for k in range(m):
+            if test_map[i][k] == 0:
+                count +=1
+
+    result = max(result, count)
+
+
+def make_wall(count):
+    if count == 3:
+        bfs()
+        return
+    for i in range(n):
+        for k in range(m):
+            if lab_map[i][k] == 0:
+                lab_map[i][k] = 1
+                make_wall(count+1)
+                lab_map[i][k] = 0
+
+
+n, m = map(int,input().split())
+lab_map = [list(map(int,input().split())) for _ in range(n)]
+
+result = 0
+make_wall(0)
+
+print(result)

@@ -1,5 +1,6 @@
 n = int(input())
 
+flag = False
 for i in range(1,n+1):
     str_num = str(i)
     
@@ -9,4 +10,8 @@ for i in range(1,n+1):
 
     if result == n:
         print(i)
+        flag = True
         break
+
+if not flag:
+    print(0) 

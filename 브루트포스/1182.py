@@ -25,7 +25,7 @@ def subset_sum(idx, sub_sum):
 
     sub_sum += arr[idx]
 
-    if sub_sum == s:
+    if sub_sum == s: 
         cnt += 1
     
     # 현재 arr[idx]를 선택한 경우의 가지

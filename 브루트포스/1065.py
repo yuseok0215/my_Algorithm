@@ -6,7 +6,7 @@ for i in range(1,n+1):
         cnt += 1
         continue
 
-    str_ = str(i)
+    str_ = str(i) 
     tmp = int(str_[1]) - int(str_[0])
     for i in range(1, len(str_)-1):
         if tmp != int(str_[i+1]) - int(str_[i]):

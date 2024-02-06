@@ -2,43 +2,34 @@ k = int(input())
 arr = list(input().split())
 
 
-def dfs(idx, left_num, flag):
-    global _max
-    global _min
+def check(i,j,k):
+    if k == '<':
+        return i < j
+    else:
+        return i > j
 
-    if len(result) == k+1:
-        combined_number = int(''.join(map(str, result)))
-        _max = max(_max, combined_number)
-        _min = min(_min, combined_number)
+def dfs(depth, s):
+    global _max, _min
+
+    if depth == k+1:
+        if len(_min) == 0:
+            _min = s
+        else:
+            _max = s
         return
 
-    flag = False
-    
-    if arr[idx] == '<':
-        for i in range(10):
-            if i not in result and left_num < i:
-                result.append(i)
-                flag = True
-                dfs(idx+1,i,flag)
-                
-                
-    elif arr[idx] == '>':
-        for i in range(10):
-            if i not in result and left_num > i:
-                result.append(i)
-                flag = True
-                dfs(idx+1,i,flag)
+    for i in range(10):
+        if not visited[i]:
+            if depth == 0 or check(s[-1], str(i), arr[depth-1]):
+                visited[i] = True
+                dfs(depth+1, s+str(i))
+                visited[i] = False  
 
-               
-            
-                    
-_max = -1e9
-_min = 1e9
+_max = ''
+_min = ''
 
-for i in range(10):
-    visited = [False] * 9
-    result = [i]
-    dfs(0,i,False)
+visited = [False] * 10
+result = ''
 
 print(_max)
 print(_min)

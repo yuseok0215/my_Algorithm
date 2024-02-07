@@ -29,7 +29,8 @@ _max = ''
 _min = ''
 
 visited = [False] * 10
-result = ''
+
+dfs(0, '')
 
 print(_max)
 print(_min)

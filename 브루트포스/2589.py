@@ -21,7 +21,8 @@ def bfs(a,b,t):
     while q:
         x,y,time = q.popleft()
 
-        t = max(t, time)
+        if t < time:
+            t = time
 
         for i in range(4):
             nx = x + dx[i]
@@ -33,9 +34,6 @@ def bfs(a,b,t):
                     q.append((nx,ny,time+1))
     
     return t
-
-                    
-
 
 for i in range(n):
     for j in range(m):

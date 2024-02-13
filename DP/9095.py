@@ -2,7 +2,7 @@ t = int(input())
 
 for _ in range(t):
     n = int(input())
-    dp = [0] * (n+1)
+    dp = [0] * (1001)
 
     dp[1] = 1
     dp[2] = 2

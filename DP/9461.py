@@ -6,19 +6,22 @@ for _ in range(t):
     
     dp[1] = 1
     dp[2] = 1
-    dp[3] = 1
 
     for i in range(3, n+1):
         dp[i] = dp[i-2] + dp[i-3]
 
     print(dp[n])
 """
+0
 1
 1
 1
-1+3
+2
+2
 3
-2+3
-1+5
+4
+5
+7
+
 
 """

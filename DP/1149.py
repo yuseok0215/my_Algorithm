@@ -7,4 +7,3 @@ for _ in range(n):
 
 dp = [0] * 1001
 
-dp[i]  = p[i-1][]

@@ -3,6 +3,8 @@ cards = list(map(int, input().split()))
 m = int(input())
 check_nums = list(map(int, input().split()))
 
+cards.sort()
+
 for num in check_nums:
     low, high = 0, n-1
     exist = False

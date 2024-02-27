@@ -16,6 +16,7 @@ while start <= end:
     if cnt < n:
         end = mid - 1
     else:
+        result = mid
         start = mid + 1
 
-print(end)
+print(result)

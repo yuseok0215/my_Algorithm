@@ -1,22 +1,22 @@
 n,m = map(int, input().split())
-trees = list(map(int, input().split()))
+tree = list(map(int, input().split()))
 
-hei = max(trees) - min(trees)
+hei = min(tree)
 
-while True:
+start, end = 1, max(tree) #이분탐색 검색 범위 설정
+
+while start <= end: #적절한 벌목 높이를 찾는 알고리즘
+    mid = (start+end) // 2
     
-    length = 0
-
-    for tree in trees:
-        if tree > hei:
-            length += tree - hei
-
-    if length == m:
-        print(hei)
-        break
-
-    elif length < m:
-        hei -= 1
+    log = 0 #벌목된 나무 총합
+    for i in tree:
+        if i >= mid:
+            log += i - mid
     
-    elif length > m:
-        hei += 1
+    #벌목 높이를 이분탐색
+    if log < m:
+        end = mid - 1
+    else:
+        start = mid + 1
+        
+print(end)

@@ -11,7 +11,8 @@ time.sort(key=lambda x : (x[0],x[1]))
 
 heap = [time[0][1]]
 for i in range(1,n):
-    if heap[0] <= time[i][0]: # 다음 시작 시간이 끝나는 시간보다 이후면
+    if heap[0] <= time[i][0]: 
+        # 다음 시작 시간이 끝나는 시간보다 이후면
         heapq.heappop(heap)
     heapq.heappush(heap,time[i][1])
 

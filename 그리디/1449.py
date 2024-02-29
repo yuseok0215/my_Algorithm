@@ -5,6 +5,8 @@
 n,l = map(int, input().split())
 fix_location = list(map(int, input().split()))
 
+fix_location.sort()
+
 fix_range = l-1
 
 start_location = 0

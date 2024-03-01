@@ -5,10 +5,10 @@ for _ in range(t):
 
     height = list(map(int, input().split()))
     height.sort()
-    ans = 0
+    res = 0
     for i in range(2, n):
         res = max(res, abs(height[i] - height[i-2]))
-    print(ans)
+    print(res)
 
 """
 1. 접근방법 

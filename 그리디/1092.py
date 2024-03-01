@@ -46,37 +46,27 @@ crane = list(map(int, input().split()))
 m = int(input())
 box = list(map(int, input().split()))
 
-# ⚡ 내림차순 정렬
-crane.sort(reverse = True)
-box.sort(reverse = True)
+crane.sort()
+box.sort()
 
 time = 0 # 시간
 box_idx = 0
-
-"""
-9 8 6
-
-7 5 4 2 2
-
-"""
 
 if max(box) > max(crane):
     print(-1)
 else:
     while True:
-        if box_idx == m-1:
-            print(time)
-            break
-
-        for i in range(n):
-            if crane[i] >= box[box_idx]:
-                if box_idx == m-1:
-                    break
-                box_idx += 1
-
         time += 1
 
+        for c in crane:
+            if c >= box[box_idx]:
+                box_idx += 1
 
+            if box_idx == m:
+                print(time)
+                exit(0)
 
+        
+    
         
             
